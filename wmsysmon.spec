@@ -29,9 +29,10 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %build
 %{__make} -C src \
 	CC=%{__cc} \
-	CFLAGS="%{rpmcflags} -I%{_includedir} \
-%ifnarch %{ix86}	
-	-DHI_INTS
+%ifarch %{ix86}	
+	CFLAGS="%{rpmcflags} -I%{_includedir}"
+%else
+	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
 %endif
 
 %install
