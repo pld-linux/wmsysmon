@@ -11,7 +11,7 @@ Source1: 	wmsysmon.wmconfig
 Icon: 		wmsymon.gif
 BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
-BuildRoot:      /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
 
