@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=wmsysmon
+Comment=System Monitor
+Comment[pl]=Monitor systemu
+Exec=wmsysmon
+Terminal=0
+Type=Application
