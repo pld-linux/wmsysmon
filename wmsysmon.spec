@@ -47,10 +47,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc {BUGS,CHANGES,README}.gz
 %attr(755,root,root) %{_bindir}/%{name}
 /etc/X11/applnk/DockApplets/wmsysmon.desktop
-
-%changelog
-* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
-  [0.2-2]
-- package is FHS 2.0 compliant,
-- spec file modified for PLD use,
-- based on spec written by Yeechang Lee <ylee@columbia.edu>.
