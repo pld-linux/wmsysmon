@@ -51,4 +51,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog README
 %attr(755,root,root) %{_bindir}/wmsysmon
 
-#%{_applnkdir}/DockApplets/wmsysmon.desktop
+#%%{_applnkdir}/DockApplets/wmsysmon.desktop
