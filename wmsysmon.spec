@@ -1,17 +1,17 @@
-Name: 		wmsysmon
-Summary: 	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
+Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
-Version: 	0.2
-Release: 	3
-Copyright: 	GPL
-Group:          X11/Window Managers/Tools
-Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
-Source0: 	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
-Source1: 	wmsysmon.desktop
-Icon: 		wmsysmon.gif
-BuildRequires:    XFree86-devel
-BuildRequires:    xpm-devel
-BuildRoot:      /tmp/%{name}-%{version}-root
+Name:		wmsysmon
+Version:	0.2
+Release:	3
+Copyright:	GPL
+Group:		X11/Window Managers/Tools
+Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
+Source0:	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
+Source1:	wmsysmon.desktop
+Icon:		wmsysmon.gif
+BuildRequires:	XFree86-devel
+BuildRequires:	xpm-devel
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
 
