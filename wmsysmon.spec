@@ -31,10 +31,14 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 
 %build
 %ifarch alpha
-%{__make} -C src CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
+%{__make} -C src \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
 %endif
 %ifarch %{ix86}
-%{__make} -C src CFLAGS="%{rpmcflags} -I/usr/X11R6/include"
+%{__make} -C src \
+	CC=%{__cc} \
+	CFLAGS="%{rpmcflags} -I/usr/X11R6/include"
 %endif
 
 %install
