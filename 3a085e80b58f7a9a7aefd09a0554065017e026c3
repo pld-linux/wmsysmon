@@ -1,0 +1,1 @@
+- pass CC=%%{__cc} also to make parameters.
