@@ -31,9 +31,9 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 	CC=%{__cc} \
 %ifarch %{ix86}
 	CFLAGS="%{rpmcflags} -I%{_includedir}" \
-	LIBDIR="-L/usr/X11R6/%{_lib}"
 %else
 	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
+	LIBDIR="-L/usr/X11R6/%{_lib}"
 %endif
 
 %install
