@@ -13,7 +13,6 @@ BuildRequires:	XFree86-devel
 URL:		http://www.gnugeneration.com/software/wmsysmon/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts. Window
