@@ -34,7 +34,7 @@ make -C wmsysmon FLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/applnk/DockApplets}
+install -d $RPM_BUILD_ROOT{%{_bindir},/usr/X11R6/share/applnk/DockApplets}
 
 %ifnarch alpha
 install -s wmsysmon/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
@@ -43,7 +43,8 @@ install -s wmsysmon/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
 install -s wmsysmon/wmsysmon-alpha $RPM_BUILD_ROOT%{_bindir}/wmsysmon
 %endif
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+
 
 gzip -9nf BUGS CHANGES README
 
@@ -55,4 +56,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc {BUGS,CHANGES,README}.gz
 %attr(755,root,root) %{_bindir}/wmsysmon
 
-%{_sysconfdir}/applnk/DockApplets/wmsysmon.desktop
+/usr/X11R6/share/applnk/DockApplets/wmsysmon.desktop
