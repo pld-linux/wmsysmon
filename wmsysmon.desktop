@@ -3,5 +3,5 @@ Name=WmSysmon
 Comment=System Monitor
 Comment[pl]=Monitor systemu
 Exec=wmsysmon
-Terminal=0
+Terminal=false
 Type=Application
