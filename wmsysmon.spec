@@ -14,8 +14,7 @@ BuildRequires:	xpm-devel
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define 	_prefix		/usr/X11R6
-%define		_sysconfdir	/etc/X11
+%define		_prefix		/usr/X11R6
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
