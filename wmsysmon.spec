@@ -12,10 +12,9 @@ Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
 BuildRequires:	xpm-devel
 ExclusiveArch:	%{ix86} alpha
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_applnkdir	%{_datadir}/applnk
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
