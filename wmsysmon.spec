@@ -1,51 +1,62 @@
-%define name wmsysmon
-%define version 0.2
-%define release 1
+Name: 		wmsysmon
+Summary: 	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
+Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
+Version: 	0.2
+Release: 	2
+Copyright: 	GPL
+Group:          X11/Window Managers/Tools
+Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
+Source0: 	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
+Source1: 	wmsysmon.wmconfig
+Icon: 		wmsymon.gif
+BuildPrereq:    XFree86-devel
+BuildPrereq:    xpm-devel
+BuildRoot:      /tmp/%{name}-%{version}-root
 
-%define builddir $RPM_BUILD_DIR/%{name}.app/%{name}
-
-Name: %{name}
-Summary: Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
-Version: %{version}
-Release: %{release}
-Group: X11/Utilities
-Copyright: GPL
-Vendor: Dave Clark <clarkd@skynet.ca>
-Source0: %{name}-%{version}.tar.gz
-Source1: %{name}.wmconfig
-URL: http://www.neotokyo.org/illusion/
-Icon: %{name}.gif
-Patch: %{name}.app-make.patch
+%define _prefix         /usr/X11R6
 
 %description
-%{name} monitors memory, swap, disk I/O, uptime, interrupts.  Window
+wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
 Maker and AfterStep dockable, but should run (I think) without them
 (e.g., swallowable by fvwm).
 
-%changelog
-* Thu Dec 31 1998 Yeechang Lee <ylee@columbia.edu>
-- Fixed a stupid mistake in wmsysmon.wmconfig
-* Tue Dec 29 1998 Yeechang Lee <ylee@columbia.edu>
-- Patched Makefile so binary goes in /usr/X11R6/bin rather than /usr/local/bin
+%description -l pl
+wmsysmon jest dokowalnym apletem dla WindowMakera i AfterStepa, 
+monitoruj±cym wykorzystanie zasobów systemowych.
 
 %prep
-%setup -n %{builddir}
-cd $RPM_BUILD_DIR
-%patch
+%setup -q -n %{name}.app
 
 %build
-make
+make -C %{name} FLAGS="$RPM_OPT_FLAGS"
 
 %install
-mkdir -p /etc/X11/wmconfig
-cp -pf $RPM_SOURCE_DIR/wmsysmon.wmconfig /etc/X11/wmconfig/%{name}
-strip %{name}
-make install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_bindir},/etc/X11/wmconfig}
 
-%files
-%doc ../BUGS ../CHANGES ../COPYING ../README
-%attr(644,root,root) %config(missingok) /etc/X11/wmconfig/%{name}
-%attr(755,root,root) /usr/X11R6/bin/%{name}
+install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/%{name}
+
+gzip -9nf BUGS CHANGES README
 
 %clean
-rm -rf $RPM_BUILD_DIR/%{name}.app
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc {BUGS,CHANGES,README}.gz
+%attr(755,root,root) %{_bindir}/%{name}
+/etc/X11/wmconfig/%{name}
+
+%changelog
+* Mon May 17 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [0.2-2]
+- modified spec file for PLD use,
+- removed wmsysmon.app-make.patch (it's already done in spec file),
+- package is FHS 2.0 compliant.
+
+* Thu Dec 31 1998 Yeechang Lee <ylee@columbia.edu>
+- Fixed a stupid mistake in wmsysmon.wmconfig
+
+* Tue Dec 29 1998 Yeechang Lee <ylee@columbia.edu>
+- Patched Makefile so binary goes in /usr/X11R6/bin rather than /usr/local/bin
