@@ -13,7 +13,7 @@ BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
 BuildRoot:      /tmp/%{name}-%{version}-root
 
-%define _prefix         /usr/X11R6
+%define _prefix	/usr/X11R6
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
@@ -49,14 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 /etc/X11/wmconfig/%{name}
 
 %changelog
-* Mon May 17 1999 Piotr Czerwiñski <pius@pld.org.pl>
+* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
   [0.2-2]
-- modified spec file for PLD use,
-- removed wmsysmon.app-make.patch (it's already done in spec file),
-- package is FHS 2.0 compliant.
-
-* Thu Dec 31 1998 Yeechang Lee <ylee@columbia.edu>
-- Fixed a stupid mistake in wmsysmon.wmconfig
-
-* Tue Dec 29 1998 Yeechang Lee <ylee@columbia.edu>
-- Patched Makefile so binary goes in /usr/X11R6/bin rather than /usr/local/bin
+- package is FHS 2.0 compliant,
+- spec file modified for PLD use,
+- based on spec written by Yeechang Lee <ylee@columbia.edu>.
