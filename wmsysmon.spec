@@ -30,10 +30,10 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 
 %build
 %ifarch alpha
-make -C src CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include -DHI_INTS"
+%{__make} -C src CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include -DHI_INTS"
 %endif
 %ifarch %{ix86}
-make -C src CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
+%{__make} -C src CFLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
 %endif
 
 %install
