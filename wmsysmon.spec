@@ -1,8 +1,8 @@
 Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
-Version:	0.2
-Release:	3
+Version:	0.3
+Release:	1
 Copyright:	GPL
 Group:		X11/Window Managers/Tools
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
@@ -11,9 +11,11 @@ Source1:	wmsysmon.desktop
 Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
 BuildRequires:	xpm-devel
+ExclusiveArch:	%{ix86} alpha
 BuildRoot:	/tmp/%{name}-%{version}-root
 
-%define _prefix	/usr/X11R6
+%define 	_prefix		/usr/X11R6
+%define		_sysconfdir	/etc/X11
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
@@ -28,14 +30,20 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %setup -q -n %{name}.app
 
 %build
-make -C %{name} FLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
+make -C wmsysmon FLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},/etc/X11/applnk/DockApplets}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_sysconfdir}/applnk/DockApplets}
 
-install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
+%ifnarch alpha
+install -s wmsysmon/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
+%endif
+%ifarch alpha
+install -s wmsysmon/wmsysmon-alpha $RPM_BUILD_ROOT%{_bindir}/wmsysmon
+%endif
+
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/applnk/DockApplets
 
 gzip -9nf BUGS CHANGES README
 
@@ -45,5 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc {BUGS,CHANGES,README}.gz
-%attr(755,root,root) %{_bindir}/%{name}
-/etc/X11/applnk/DockApplets/wmsysmon.desktop
+%attr(755,root,root) %{_bindir}/wmsysmon
+
+%{_sysconfdir}/applnk/DockApplets/wmsysmon.desktop
