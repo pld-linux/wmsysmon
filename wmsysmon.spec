@@ -15,6 +15,7 @@ ExclusiveArch:	%{ix86} alpha
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define		_prefix		/usr/X11R6
+%define		_applnkdir	%{_datadir}/applnk
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts.  Window
@@ -33,7 +34,7 @@ make -C wmsysmon FLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},/usr/X11R6/share/applnk/DockApplets}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/DockApplets}
 
 %ifnarch alpha
 install -s wmsysmon/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
@@ -42,7 +43,7 @@ install -s wmsysmon/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
 install -s wmsysmon/wmsysmon-alpha $RPM_BUILD_ROOT%{_bindir}/wmsysmon
 %endif
 
-install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 
 gzip -9nf BUGS CHANGES README
@@ -55,4 +56,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc {BUGS,CHANGES,README}.gz
 %attr(755,root,root) %{_bindir}/wmsysmon
 
-/usr/X11R6/share/applnk/DockApplets/wmsysmon.desktop
+%{_applnkdir}/DockApplets/wmsysmon.desktop
