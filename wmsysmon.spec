@@ -2,7 +2,7 @@ Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.7.6
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://www.gnugeneration.com/software/wmsysmon/src/%{name}-%{version}.tar.gz
@@ -30,7 +30,8 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %{__make} -C src \
 	CC=%{__cc} \
 %ifarch %{ix86}
-	CFLAGS="%{rpmcflags} -I%{_includedir}"
+	CFLAGS="%{rpmcflags} -I%{_includedir}" \
+	LIBDIR="-L/usr/X11R6/%{_lib}"
 %else
 	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
 %endif
