@@ -2,7 +2,7 @@ Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://gnugeneration.com/pub/Linux/wmsysmon/%{name}-%{version}.tar.gz
@@ -10,7 +10,6 @@ Source1:	%{name}.desktop
 Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
 URL:		http://www.gnugeneration.com/software/wmsysmon.html
-ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -28,38 +27,27 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %setup -q
 
 %build
-%ifarch alpha
 %{__make} -C src \
 	CC=%{__cc} \
-	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
-%endif
-%ifarch %{ix86}
-%{__make} -C src \
-	CC=%{__cc} \
-	CFLAGS="%{rpmcflags} -I/usr/X11R6/include"
+	CFLAGS="%{rpmcflags} -I%{_includedir} \
+%ifnarch %{ix86}	
+	-DHI_INTS"
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_applnkdir}/DockApplets}
 
-%ifarch alpha
-install src/wmsysmon-alpha $RPM_BUILD_ROOT%{_bindir}/wmsysmon
-%endif
-%ifarch %{ix86}
 install src/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
-%endif
 
 #install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
-
-gzip -9nf ChangeLog README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc ChangeLog README
 %attr(755,root,root) %{_bindir}/wmsysmon
 
 #%{_applnkdir}/DockApplets/wmsysmon.desktop
