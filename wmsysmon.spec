@@ -2,15 +2,16 @@ Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.5.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Window Managers/Tools
 Group(de):	X11/Fenstermanager/Werkzeuge
 Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
-Source0:	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
+Source0:	http://gnugeneration.com/pub/Linux/wmsysmon/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
+URL:		http://www.gnugeneration.com/software/wmsysmon.html
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -47,7 +48,7 @@ install src/wmsysmon-alpha $RPM_BUILD_ROOT%{_bindir}/wmsysmon
 install src/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
 %endif
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
+#install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 gzip -9nf ChangeLog README
 
@@ -56,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {ChangeLog,README}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/wmsysmon
 
-%{_applnkdir}/DockApplets/wmsysmon.desktop
+#%{_applnkdir}/DockApplets/wmsysmon.desktop
