@@ -8,10 +8,10 @@ Group:          X11/Window Managers/Tools
 Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
 Source0: 	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
 Source1: 	wmsysmon.wmconfig
-Icon: 		wmsymon.gif
+Icon: 		wmsysmon.gif
 BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:      /tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
 
