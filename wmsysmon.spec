@@ -2,7 +2,7 @@ Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.7.6
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://www.gnugeneration.com/software/wmsysmon/src/%{name}-%{version}.tar.gz
@@ -12,7 +12,6 @@ Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
 URL:		http://www.gnugeneration.com/software/wmsysmon/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 wmsysmon monitors memory, swap, disk I/O, uptime, interrupts. Window
@@ -29,18 +28,14 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %build
 %{__make} -C src \
 	CC=%{__cc} \
-%ifarch %{ix86}
-	CFLAGS="%{rpmcflags} -I%{_includedir}" \
-%else
-	CFLAGS="%{rpmcflags} -I%{_includedir} -DHI_INTS"
+	CFLAGS="%{rpmcflags} -DHI_INTS" \
 	LIBDIR="-L/usr/X11R6/%{_lib}"
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_desktopdir}/docklets}
 
-install src/wmsysmon       $RPM_BUILD_ROOT%{_bindir}
+install src/wmsysmon $RPM_BUILD_ROOT%{_bindir}
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}/docklets
 
