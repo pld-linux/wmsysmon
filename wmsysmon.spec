@@ -10,7 +10,6 @@ Source0:	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
 Source1:	wmsysmon.desktop
 Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
-BuildRequires:	xpm-devel
 ExclusiveArch:	%{ix86} alpha
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
