@@ -2,12 +2,12 @@ Name: 		wmsysmon
 Summary: 	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
 Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
 Version: 	0.2
-Release: 	2
+Release: 	3
 Copyright: 	GPL
 Group:          X11/Window Managers/Tools
 Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
 Source0: 	http://www.neotokyo.org/illusion/%{name}-%{version}.tar.gz
-Source1: 	wmsysmon.wmconfig
+Source1: 	wmsysmon.desktop
 Icon: 		wmsysmon.gif
 BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
@@ -28,14 +28,14 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 %setup -q -n %{name}.app
 
 %build
-make -C %{name} FLAGS="$RPM_OPT_FLAGS"
+make -C %{name} FLAGS="$RPM_OPT_FLAGS -I/usr/X11R6/include"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},/etc/X11/wmconfig}
+install -d $RPM_BUILD_ROOT{%{_bindir},/etc/X11/applnk/DockApplets}
 
 install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
 gzip -9nf BUGS CHANGES README
 
@@ -46,7 +46,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {BUGS,CHANGES,README}.gz
 %attr(755,root,root) %{_bindir}/%{name}
-/etc/X11/wmconfig/%{name}
+/etc/X11/applnk/DockApplets/wmsysmon.desktop
 
 %changelog
 * Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
