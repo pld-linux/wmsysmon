@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=wmsysmon
+Name=WmSysmon
 Comment=System Monitor
 Comment[pl]=Monitor systemu
 Exec=wmsysmon
