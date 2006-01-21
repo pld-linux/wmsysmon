@@ -8,7 +8,6 @@ Group:		X11/Window Managers/Tools
 Source0:	http://www.gnugeneration.com/software/wmsysmon/src/%{name}-%{version}.tar.gz
 # Source0-md5:	1f8b7872c20fa6af1c89265ea2126c31
 Source1:	%{name}.desktop
-Icon:		wmsysmon.gif
 BuildRequires:	XFree86-devel
 URL:		http://www.gnugeneration.com/software/wmsysmon/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
