@@ -26,7 +26,7 @@ monitoruj±cym wykorzystanie zasobów systemowych.
 
 %build
 %{__make} -C src \
-	CC=%{__cc} \
+	CC="%{__cc}" \
 	CFLAGS="%{rpmcflags} -DHI_INTS" \
 	LIBDIR="-L/usr/X11R6/%{_lib}"
 
