@@ -1,5 +1,5 @@
 Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
-Summary(pl):	Monitor systemu dla WindowMakera/AfterStepa
+Summary(pl.UTF-8):   Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.7.6
 Release:	4
@@ -17,9 +17,9 @@ wmsysmon monitors memory, swap, disk I/O, uptime, interrupts. Window
 Maker and AfterStep dockable, but should run (I think) without them
 (e.g., swallowable by fvwm).
 
-%description -l pl
+%description -l pl.UTF-8
 wmsysmon jest dokowalnym apletem dla WindowMakera i AfterStepa,
-monitoruj±cym wykorzystanie zasobów systemowych.
+monitorujÄ…cym wykorzystanie zasobÃ³w systemowych.
 
 %prep
 %setup -q
