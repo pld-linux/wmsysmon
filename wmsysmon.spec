@@ -1,5 +1,5 @@
 Summary:	Window Maker/AfterStep memory/swap/IO/uptime/ints monitor
-Summary(pl.UTF-8):   Monitor systemu dla WindowMakera/AfterStepa
+Summary(pl.UTF-8):	Monitor systemu dla WindowMakera/AfterStepa
 Name:		wmsysmon
 Version:	0.7.6
 Release:	4
